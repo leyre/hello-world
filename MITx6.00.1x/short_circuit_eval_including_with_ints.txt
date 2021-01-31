@@ -1,0 +1,84 @@
+From TA tutorial in comments here: https://learning.edx.org/course/course-v1:MITx+6.00.1x+1T2021/block-v1:MITx+6.00.1x+1T2021+type@sequential+block@221a4c17dba341d6a970a0d80343253c/block-v1:MITx+6.00.1x+1T2021+type@vertical+block@3655b06b1b2f41528cfeecf3a272b8f8
+
+Now… Short-Circuit Evaluation!
+This is where the most interesting part begins. Don’t you notice a pattern in the truth tables that could make the evaluations much more efficient?
+
+Think about it for a moment…
+
+For the and operator: if either one of the expressions is False, the entire expression will evaluate to False.
+
+So…. What happens if the first expression is False? It is worth it to evaluate the second expression?
+
+The answer is “No”, because we already know that, independently of the result of the second expression, the final result will be False.
+
+Let me illustrate this:
+
+If we have:
+
+>>> 5 > 6 and 8 < 9
+
+The expression would be evaluated from left to right.
+
+First, the value of 5 > 6 would be determined. It’s False.
+
+If we already know that the and operator returns False when either one of the expressions is False, there is no need to evaluate to second
+expression if we already know that the first expression is False.
+
+>>> False and … # No need to evaluate the second one
+
+False
+
+🔔 This makes the process much more efficient, and later when you learn how to use functions and recursion, you will see that this can improve performance tremendously.
+
+Now let’s see an example with the or operator. If either one of the expressions is True, the or operator returns True.
+
+So… what happens if the first expression is True?
+
+The value True will be returned automatically because there is no need to determine if the second expression is True.
+
+This is an example:
+
+>>> 5 < 6 or 7 > 9
+
+>>> True or … # No need to evaluate the second one
+
+True
+
+⭐ Quick Tip: Short-Circuit Evaluation with Values
+A very interesting feature of short-circuiting is that it can be used to return other values, not just True and False. In the previous examples, Boolean values were returned because the expressions evaluated to Boolean values.
+
+But what do you think will happen if you have this expression?
+
+>>> 0 and 4
+
+Think about this for a moment… what value do you think would be returned?
+
+Well… this example uses two concepts: short-circuit evaluation and Truthy and Falsy values.
+
+Basically, 0 is a Falsy value because it evaluates to False. 4 is a Truthy value because it evaluates to True. Numbers different than 0 evaluate to True.
+
+>>> 0 and 4 # Equivalent to False and True
+
+Now, in Python, using short-circuiting, if the first value before the and operator evaluates to False, that value is automatically returned.
+
+Therefore, the value returned would be 0
+
+Yes, I know this was very surprising! 🎉
+
+Note: The actual value is returned, not the truth value False.
+
+In contrast, if the first value evaluates to True, the second value is evaluated and returned.
+
+>>> 4 and 5 # Equivalent to True and True
+
+5
+With the or operator, if the first value evaluates to True, that value is returned automatically through short-circuiting.
+
+>>> 5 or 0 # Equivalent to True and False
+
+5
+If the first value evaluates to False, the second value is returned.
+
+>>> 0 or 5
+
+5
