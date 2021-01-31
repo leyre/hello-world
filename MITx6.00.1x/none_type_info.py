@@ -69,6 +69,6 @@ Key things to remember:
     if something is None, you should use the 'is' keyword and not simply the equality operator.
 
 None is falsy, so if you’re using it in decision structures or anything like that, you can often assume that it will
-behave the way False does. But if you want to be absolutely sure that something is None, then you do need to use the
+behave the way Falgitse does. But if you want to be absolutely sure that something is None, then you do need to use the
 is keyword.
 """
