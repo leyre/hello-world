@@ -3,6 +3,31 @@ Info on functions
 """
 # access docstring info with  `functionName.__doc__` note the double underscores like init func
 
+# you can return multiple values from a func with a tuple or other collection like a list
+# you can assign these to multiple variables in one line by comma separating variable names
+# types will be of elements from collection rather than collection type
+
+def returnTuple(a, b, c):
+    return (a, b, c)
+
+var1, var2, var3 = returnTuple("3", 2, True)
+
+print(var1, type(var1), var2, type(var2), var3, type(var3)) # 3 <class 'str'> 2 <class 'int'> True <class 'bool'>
+
+
+
+# you can create a tuple from individual params in a function by adding asterisk; looks like you only need 1 param name then.
+def returnArgsAsTuple (*inputTuple):
+    print(inputTuple)
+    print(type(inputTuple[0]))
+
+returnArgsAsTuple(1, 2, 3, 4, 5)        # (1, 2, 3, 4, 5, 6)
+                                        # <class 'int'>
+returnArgsAsTuple(1, 2, 'four', 4, 5)   # 1, 2, 'four', 4, 5)
+                                        # <class 'int'>
+returnArgsAsTuple(1)                    # (1,)
+                                        # <class 'int'>
+
 # Default params, just bind the formal param to the default value in the def to default it:
 def name_orderer(first_name, last_name, reverse = True):
     '''
